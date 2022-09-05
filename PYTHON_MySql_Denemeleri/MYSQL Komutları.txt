@@ -1,0 +1,26 @@
+Tablo Silme
+DROP TABLE para_birimi;
+############
+Root Silme
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM para_birimi;
+####################
+
+Tablo Oluşturma
+CREATE TABLE para_birimi (
+currency_id int NOT NULL AUTO_INCREMENT UNIQUE,
+currency_name varchar(20) NOT NULL UNIQUE,
+PRIMARY KEY(currency_id)
+);
+
+#####################
+Eleman Ekleme
+INSERT INTO  para_birimi values('1','silparabirimi','14.2','2022-08-17');
+
+######################
+Relevant Tablo Oluşturma
+CREATE TABLE dolar_birim (
+currency_id int NOT NULL AUTO_INCREMENT UNIQUE,
+currency_name varchar(20) NOT NULL UNIQUE,
+Foreign KEY(currency_id) References para_birimi(currency_id)
+);
